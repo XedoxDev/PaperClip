@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#ffffff</color>
+    <color name="tint">#ffffff</color>
+    <color name="text">#000000</color>
+    <color name="toolbar">#7EDB78</color>
+    <color name="pressedItem">#efefef</color>
+    <color name="primary">#7EDB78</color>
+    <color name="primaryDark">#58AA52</color>
+    
+    <color name="selectedItem">#ffffff</color>
+    <color name="ic_more">#000000</color>
+</resources>
