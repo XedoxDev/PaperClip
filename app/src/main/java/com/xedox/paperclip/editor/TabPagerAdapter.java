@@ -30,8 +30,12 @@ public class TabPagerAdapter extends FragmentStateAdapter {
         return editors.get(position);
     }
 
-    public EditorFragment getEditor(int pos) {
+    public EditorFragment getEditorFragment(int pos) {
         return editors.get(pos);
+    }
+    
+    public Editor getEditor(int pos) {
+        return editors.get(pos).getEditor();
     }
 
     public void addEditor(String pageName, String text) {

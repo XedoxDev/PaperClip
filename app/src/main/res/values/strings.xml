@@ -2,29 +2,32 @@
 <resources>
     <string name="app_name">PaperClip</string>
     <string name="app_version">v0.0.1</string>
-    
+
     <string name="createProject">Создать проект</string>
     <string name="projectName">Название проекта</string>
     <string name="create">Создать</string>
     <string name="cancel">Отмена</string>
-    
+
     <string name="exit">Выход</string>
     <string name="areYouSureYouWantToGetOut">Вы уверены, что хотите выйти?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    
+
     <string name="exitToMainMenu">Выход в главное меню</string>
     <string name="areYouSureYouWantToGetOutInMainMenu">Вы уверены, что хотите выйти в главное меню?</string>
-    
+
     <string name="save">Сохранить</string>
     <string name="remove">Удвлить</string>
-    
+
     <string name="createPage">Создать страницу</string>
     <string name="deletePage">Удалить страницу</string>
     <string name="renamePage">Переименовать страницу</string>
     <string name="namePage">Название страницы</string>
-    
-     <string name="view">Просмотреть</string>
-    
+
+    <string name="view">Просмотреть</string>
+
     <string name="creator">Разработчик</string>
+
+    <string name="undo">Отменить</string>
+    <string name="redo">Вернуть</string>
 </resources>

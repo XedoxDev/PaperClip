@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
-    
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/toolbar"
-        app:titleTextColor="@color/tint"
-        app:tabMode="scrollable"
-        android:layoutDirection="ltr" />
-    
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
+    android:layout_width="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:background="@color/primaryDark"
-        app:tabTextColor="@color/text"
-        app:tabSelectedTextColor="@color/selectedItem"
-        app:tabIndicatorColor="@color/selectedItem"/>
-    
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager"
         android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        android:id="@+id/appbar_layout">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:background="@color/primary"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            android:id="@+id/appbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/appbar_layout"
+        android:orientation="horizontal"
+        android:background="@color/primaryVariant"
+        android:id="@+id/tabBar">
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@color/primaryVariant"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="@color/selectedItem"
+            app:tabTextColor="@color/unselectedItem"
+            app:tabSelectedTextColor="@color/selectedItem"
+            android:id="@+id/tabs"
+            android:layoutDirection="ltr"
+            app:tabRippleColor="@color/primary" 
+            android:layout_toLeftOf="@+id/undoButton"/>
+
+        <ImageButton
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:contentDescription="@string/undo"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_undo"
+            android:id="@+id/undoButton"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_toLeftOf="@+id/redoButton"/>
+
+        <ImageButton
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:contentDescription="@string/undo"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_redo"
+            android:id="@+id/redoButton"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabs"/>
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tabBar"
+        android:id="@+id/pager" />
+
 </RelativeLayout>

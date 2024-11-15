@@ -6,8 +6,10 @@
     <color name="toolbar">#7EDB78</color>
     <color name="pressedItem">#efefef</color>
     <color name="primary">#7EDB78</color>
+    <color name="primaryVariant">#63C15D</color>
     <color name="primaryDark">#58AA52</color>
-    
+
     <color name="selectedItem">#ffffff</color>
-    <color name="ic_more">#000000</color>
+    <color name="unselectedItem">#404040</color>
+
 </resources>

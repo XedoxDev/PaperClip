@@ -1,29 +1,21 @@
 package com.xedox.paperclip.activitys;
 
-import android.content.ComponentName;
-import android.graphics.Movie;
-import android.graphics.drawable.Drawable;
 import android.content.Intent;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
-import android.view.KeyEvent;
-import android.view.SubMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import com.xedox.paperclip.App;
 import com.xedox.paperclip.R;
 import com.xedox.paperclip.dialogs.CreatePageDialog;
 import com.xedox.paperclip.editor.EditorFragment;
@@ -31,28 +23,39 @@ import com.xedox.paperclip.projects.Project;
 import com.xedox.paperclip.dialogs.ExitDialog2;
 import com.xedox.paperclip.editor.TabPagerAdapter;
 import com.xedox.paperclip.tools.XDoc;
-import com.xedox.paperclip.tools.XFile;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EditorActivtiy extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private MaterialToolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private Project project;
     private TabPagerAdapter adapter;
+    
+    private ImageButton undo, redo;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.appbar);
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.pager);
-
+        
+        undo = findViewById(R.id.undoButton);
+        redo = findViewById(R.id.redoButton);
+        
+        undo.setOnClickListener((v)->{
+            adapter.getEditor(tabLayout.getSelectedTabPosition()).undo();
+        });
+        redo.setOnClickListener((v)->{
+            adapter.getEditor(tabLayout.getSelectedTabPosition()).redo();
+        });
+        
         String projectName = getIntent().getStringExtra("projectName");
         project = new Project(projectName);
         
@@ -68,7 +71,7 @@ public class EditorActivtiy extends AppCompatActivity {
                         tabLayout,
                         viewPager,
                         (tab, pos) -> {
-                            tab.setText(adapter.getEditor(pos).getPageName());
+                            tab.setText(adapter.getEditorFragment(pos).getPageName());
                             registerForContextMenu(tab.view);
                             tab.view.setOnLongClickListener(
                                     (v) -> {
