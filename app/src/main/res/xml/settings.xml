@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/app">
+        <ListPreference
+            android:key="theme"
+            android:title="@string/theme"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes"
+            android:defaultValue="@string/light" />
+        <ListPreference
+            android:key="language"
+            android:title="@string/language"
+            android:entries="@array/languages"
+            android:entryValues="@array/languages"
+            android:defaultValue="Русский" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/editor">
+        <EditTextPreference
+            android:key="textSize"
+            android:title="@string/textSize"
+            android:summary="@string/enterTextSize"
+            android:inputType="number"
+            android:defaultValue="24" />
+        
+        <EditTextPreference
+            android:key="paddings"
+            android:title="@string/paddings"
+            android:summary="@string/enterPaddings"
+            android:inputType="number"
+            android:defaultValue="0" />
+
+        <SwitchPreferenceCompat
+            android:key="lineBreaks"
+            android:title="@string/lineBreaks"
+            android:defaultValue="true" />
+        
+        <SwitchPreferenceCompat
+            android:key="autoCompletionOfBrackets"
+            android:title="@string/autoCompletionOfBrackets"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+    
+</PreferenceScreen>

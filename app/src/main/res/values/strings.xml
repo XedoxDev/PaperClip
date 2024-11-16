@@ -17,7 +17,7 @@
     <string name="areYouSureYouWantToGetOutInMainMenu">Вы уверены, что хотите выйти в главное меню?</string>
 
     <string name="save">Сохранить</string>
-    <string name="remove">Удвлить</string>
+    <string name="remove">Удалить</string>
 
     <string name="createPage">Создать страницу</string>
     <string name="deletePage">Удалить страницу</string>
@@ -30,4 +30,32 @@
 
     <string name="undo">Отменить</string>
     <string name="redo">Вернуть</string>
+
+    <string name="goLeft">Влево</string>
+    <string name="goRight">Вправо</string>
+    <string name="goUp">Вверх</string>
+    <string name="goDown">Вниз</string>
+
+    <string name="copy">Скопировать</string>
+    <string name="paste">Вставить</string>
+    <string name="select">Выборка</string>
+    <string name="select_all">Выбрать все</string>
+
+    <string name="editor">Редактор</string>
+    <string name="lineBreaks">Горизонтальный скролл</string>
+    <string name="textSize">Размер текста</string>
+    <string name="paddings">Отступы</string>
+    <string name="enterPaddings">Введите размер отступов (Пиксели)</string>
+
+    <string name="app">Приложение</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
+    <string name="language">Язык</string>
+    <string name="selectTheme">Ввберите тему</string>
+    <string name="enterTextSize">Введите размер текста</string>
+    <string name="selectLanguage">Выберите язык</string>
+    <string name="light">Светлая</string>
+    <string name="dark">Тёмная</string>
+    
+    <string name="autoCompletionOfBrackets">Авто дополнение скобок</string>
 </resources>

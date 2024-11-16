@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- soon...
-    <item
-        android:id="@+id/rename"
-        android:title="@string/renamePage" />
-    -->
+    <!-- soon... <item android:id="@+id/rename" android:title="@string/renamePage" /> -->
     <item
         android:id="@+id/remove"
-        android:title="@string/deletePage" />
+        android:title="@string/deletePage"
+        android:icon="@drawable/ic_remove"
+        app:showAsAction="ifRoom" />
 
 </menu>

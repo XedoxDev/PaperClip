@@ -1,15 +1,23 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <style
         name="AppTheme"
         parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/tint</item>
         <item name="colorPrimaryVariant">@color/primaryVariant</item>
-        <item name="tint">@color/tint</item>
-        <item name="colorPrimaryDark">@color/primaryDark</item>
-        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/tint</item>
-        <item name="colorSecondaryVariant">@color/primaryVariant</item>
+        <item name="android:tint">@color/tint</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariant</item>
         <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="ToolButton" parent="Widget.AppCompat.ActionButton">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:backgroundTint">@color/primary</item>
     </style>
 </resources>

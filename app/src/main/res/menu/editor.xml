@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/save"
-        android:title="@string/save" />
+        android:title="@string/save"
+        android:icon="@drawable/ic_save" 
+        app:showAsAction="ifRoom"
+        />
     
     <item
         android:id="@+id/createPage"
-        android:title="@string/createPage" />
+        android:title="@string/createPage"
+        android:icon="@drawable/ic_plus" 
+        app:showAsAction="ifRoom"/>
     
     <item
         android:id="@+id/view"
-        android:title="@string/view" />
+        android:title="@string/view"
+        android:icon="@drawable/ic_look" 
+        app:showAsAction="ifRoom"/>
 
 </menu>

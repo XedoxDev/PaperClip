@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/createProject"
-        android:title="@string/createProject" />
+        android:title="@string/createProject" 
+        android:icon="@drawable/ic_plus"
+        app:showAsAction="ifRoom"
+        />
     
     <item
         android:id="@+id/developer"
-        android:title="@string/creator" />
+        android:title="@string/creator"
+        android:icon="@drawable/ic_link" 
+        app:showAsAction="ifRoom"/>
+    
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings" 
+        app:showAsAction="ifRoom"/>
 
 </menu>

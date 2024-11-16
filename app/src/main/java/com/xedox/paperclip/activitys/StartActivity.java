@@ -45,7 +45,7 @@ public class StartActivity extends AppCompatActivity {
                         this,
                         App.getProjects(),
                         (project, pos) -> {
-                            Intent i = new Intent(this, EditorActivtiy.class);
+                            Intent i = new Intent(this, EditorActivity.class);
                             i.putExtra("projectName", project.getName());
                             startActivity(i);
                             finish();
@@ -83,6 +83,10 @@ public class StartActivity extends AppCompatActivity {
         }
         if (item.getItemId() == R.id.developer) {
             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/xedox_creator"));
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.settings) {
+            Intent i = new Intent(this, SettingsActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

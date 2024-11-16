@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="50dp"
+     android:layout_width="match_parent"
+     android:background="@color/primaryVariant"
+     android:orientation="vertical"
+     android:layout_alignParentBottom="true"
+     android:id="@+id/panel">
+
+    <HorizontalScrollView
+         android:layout_height="25dp"
+         android:layout_width="match_parent"
+         android:background="@color/primaryVariant"
+         android:layout_alignParentBottom="true"
+         android:id="@+id/panel">
+
+        <LinearLayout
+             android:layout_height="25dp"
+             android:layout_width="match_parent"
+             android:gravity="left|center_horizontal"
+             android:orientation="horizontal">
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/select_all"
+                 android:src="@drawable/ic_select_all"
+                 style="@style/ToolButton"
+                 android:id="@+id/selectAll" />
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/goUp"
+                 android:src="@drawable/ic_up"
+                 style="@style/ToolButton"
+                 android:id="@+id/goUp" />
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/select"
+                 android:src="@drawable/ic_select"
+                 style="@style/ToolButton"
+                 android:id="@+id/select" />
+            
+             <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/paste"
+                 android:src="@drawable/ic_paste"
+                 style="@style/ToolButton"
+                 android:id="@+id/paste" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+         android:layout_height="25dp"
+         android:layout_width="match_parent"
+         android:background="@color/primaryVariant"
+         android:layout_alignParentBottom="true"
+         android:id="@+id/panel">
+
+        <LinearLayout
+             android:layout_height="25dp"
+             android:layout_width="match_parent"
+             android:gravity="left|center_horizontal"
+             android:orientation="horizontal">
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/goLeft"
+                 android:src="@drawable/ic_left"
+                 style="@style/ToolButton"
+                 android:id="@+id/goLeft" />
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/goDown"
+                 android:src="@drawable/ic_down"
+                 style="@style/ToolButton"
+                 android:id="@+id/goDown" />
+
+            <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/goRight"
+                 android:src="@drawable/ic_right"
+                 style="@style/ToolButton"
+                 android:id="@+id/goRight" />
+            
+              <ImageButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:contentDescription="@string/copy"
+                 android:src="@drawable/ic_copy"
+                 style="@style/ToolButton"
+                 android:id="@+id/copy" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>

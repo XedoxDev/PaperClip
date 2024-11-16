@@ -4,29 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-        android:id="@+id/appbar_layout">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:background="@color/primary"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            android:id="@+id/appbar" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
+    
+    <include layout="@layout/app_bar"/>
+    
     <RelativeLayout
         android:layout_height="40dp"
         android:layout_width="match_parent"
         android:layout_below="@+id/appbar_layout"
-        android:orientation="horizontal"
         android:background="@color/primaryVariant"
+        android:orientation="horizontal"
         android:id="@+id/tabBar">
 
         <com.google.android.material.tabs.TabLayout
@@ -35,12 +21,12 @@
             android:background="@color/primaryVariant"
             app:tabMode="scrollable"
             app:tabIndicatorColor="@color/selectedItem"
+            android:layout_toLeftOf="@+id/undoButton"
             app:tabTextColor="@color/unselectedItem"
             app:tabSelectedTextColor="@color/selectedItem"
             android:id="@+id/tabs"
             android:layoutDirection="ltr"
-            app:tabRippleColor="@color/primary" 
-            android:layout_toLeftOf="@+id/undoButton"/>
+            app:tabRippleColor="@color/primary" />
 
         <ImageButton
             android:layout_height="40dp"
@@ -48,9 +34,9 @@
             android:contentDescription="@string/undo"
             android:scaleType="centerInside"
             android:src="@drawable/ic_undo"
-            android:id="@+id/undoButton"
+            android:layout_toLeftOf="@+id/redoButton"
             style="@style/Widget.AppCompat.ActionButton"
-            android:layout_toLeftOf="@+id/redoButton"/>
+            android:id="@+id/undoButton" />
 
         <ImageButton
             android:layout_height="40dp"
@@ -58,9 +44,9 @@
             android:contentDescription="@string/undo"
             android:scaleType="centerInside"
             android:src="@drawable/ic_redo"
-            android:id="@+id/redoButton"
             style="@style/Widget.AppCompat.ActionButton"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:id="@+id/redoButton" />
 
     </RelativeLayout>
 
@@ -68,6 +54,8 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_below="@+id/tabBar"
+        android:layout_above="@+id/panel"
         android:id="@+id/pager" />
-
+    
+    <include layout="@layout/format_bar"/>
 </RelativeLayout>

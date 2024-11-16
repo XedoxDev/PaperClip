@@ -1,16 +1,21 @@
 package com.xedox.paperclip.activitys;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
@@ -18,51 +23,102 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import com.xedox.paperclip.R;
 import com.xedox.paperclip.dialogs.CreatePageDialog;
+import com.xedox.paperclip.editor.Editor;
 import com.xedox.paperclip.editor.EditorFragment;
 import com.xedox.paperclip.projects.Project;
 import com.xedox.paperclip.dialogs.ExitDialog2;
 import com.xedox.paperclip.editor.TabPagerAdapter;
+import com.xedox.paperclip.tools.ClipBoard;
 import com.xedox.paperclip.tools.XDoc;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditorActivtiy extends AppCompatActivity {
+public class EditorActivity extends AppCompatActivity {
 
     private MaterialToolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private Project project;
     private TabPagerAdapter adapter;
-    
+
     private ImageButton undo, redo;
-    
+    private ImageButton goL, goR, goU, goD;
+    private ImageButton copy, paste;
+    private ImageButton select, selectAll;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-
         toolbar = findViewById(R.id.appbar);
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.pager);
-        
+
         undo = findViewById(R.id.undoButton);
         redo = findViewById(R.id.redoButton);
+        goL = findViewById(R.id.goLeft);
+        goR = findViewById(R.id.goRight);
+        goU = findViewById(R.id.goUp);
+        goD = findViewById(R.id.goDown);
+
+        copy = findViewById(R.id.copy);
+        paste = findViewById(R.id.paste);
+        select = findViewById(R.id.select);
+        selectAll = findViewById(R.id.selectAll);
+
+        undo.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).undo();
+                });
+        redo.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).redo();
+                });
+        goL.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).goCursor(-1);
+                });
+        goR.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).goCursor(1);
+                });
+
+        copy.setOnClickListener(
+                (v) -> {
+                    Editor e = adapter.getEditor(tabLayout.getSelectedTabPosition());
+                    ClipBoard.copy(this, e.copy());
+                });
+        paste.setOnClickListener(
+                (v) -> {
+                    Editor e = adapter.getEditor(tabLayout.getSelectedTabPosition());
+                    e.paste();
+                });
+        select.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).startSelect();
+                });
+        selectAll.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).selectAll();
+                });
         
-        undo.setOnClickListener((v)->{
-            adapter.getEditor(tabLayout.getSelectedTabPosition()).undo();
-        });
-        redo.setOnClickListener((v)->{
-            adapter.getEditor(tabLayout.getSelectedTabPosition()).redo();
-        });
-        
+        goU.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).jumpCursor(-1);
+                });
+        goD.setOnClickListener(
+                (v) -> {
+                    adapter.getEditor(tabLayout.getSelectedTabPosition()).jumpCursor(1);
+                });
+
         String projectName = getIntent().getStringExtra("projectName");
         project = new Project(projectName);
-        
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(projectName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        
         adapter = new TabPagerAdapter(this);
 
         viewPager.setAdapter(adapter);

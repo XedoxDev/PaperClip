@@ -60,7 +60,7 @@ public class TabPagerAdapter extends FragmentStateAdapter {
     }
     
     public void updateEditor(int position, String text) {
-        editors.get(position).getEditor().setTextString(text);
+        editors.get(position).getEditor().setText(text);
         notifyItemChanged(position);
     }
     

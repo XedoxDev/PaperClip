@@ -1,0 +1,5 @@
+/.androidide
+/.gradle
+/.idea
+*.keystore
+*.jks

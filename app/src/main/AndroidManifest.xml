@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.EditorActivtiy" />
+        <activity android:name=".activitys.EditorActivity" />
         <activity android:name=".activitys.PreviewActivity" />
+        <activity android:name=".activitys.SettingsActivity" />
     </application>
 </manifest>

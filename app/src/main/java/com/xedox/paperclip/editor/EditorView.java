@@ -1,39 +1,16 @@
 package com.xedox.paperclip.editor;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xedox.paperclip.R;
-import java.util.ArrayList;
-import java.util.List;
+import com.xedox.paperclip.tools.ClipBoard;
 
 public class EditorView extends AppCompatEditText implements Editor {
-
-    private List<String> changes;
-    private int maxChanges = 100;
-    private int currentChangeIndex = -1;
-
-    private TextWatcher watcher =
-            new TextWatcher() {
-
-                @Override
-                public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
-
-                @Override
-                public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
-
-                @Override
-                public void afterTextChanged(Editable e) {
-                    changes.add(e.toString());
-                    currentChangeIndex = changes.size();
-                    if (changes.size() > maxChanges) changes.remove(0);
-                }
-            };
 
     public EditorView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,26 +26,13 @@ public class EditorView extends AppCompatEditText implements Editor {
         setGravity(Gravity.START);
         setBackgroundColor(getContext().getColor(R.color.background));
         setTextColor(getContext().getColor(R.color.text));
-
-        changes = new ArrayList<>();
-        addTextChangedListener(watcher);
     }
 
     @Override
-    public void undo() {
-        if (currentChangeIndex > 0) {
-            currentChangeIndex--;
-            setText(changes.get(currentChangeIndex));
-        }
-    }
+    public void undo() {}
 
     @Override
-    public void redo() {
-        if (currentChangeIndex < changes.size()) {
-            currentChangeIndex++;
-            setTextString(changes.get(currentChangeIndex));
-        }
-    }
+    public void redo() {}
 
     @Override
     public String getTextString() {
@@ -76,7 +40,83 @@ public class EditorView extends AppCompatEditText implements Editor {
     }
 
     @Override
-    public void setTextString(String newText) {
-        setText(newText);
+    public void goCursor(int relative) {
+        if (getSelectionStart() == getSelectionEnd()) {
+            int start = getSelectionEnd();
+            if (start + relative >= 0 && start + relative < length() + 1)
+                setSelection(start + relative);
+            return;
+        }
+
+        if (getSelectionStart() != getSelectionEnd()) {
+            int start = getSelectionStart();
+            int end = getSelectionEnd();
+            if (end + 1 < length() && end + 1 >= 0) setSelection(start, end + relative);
+            if (start == getSelectionEnd()
+                    && getSelectionEnd() + relative >= 0
+                    && getSelectionEnd() + relative <= length())
+                setSelection(start, getSelectionEnd() + relative);
+        }
+    }
+
+    @Override
+    public int[] getSelect() {
+        return new int[] {getSelectionStart(), getSelectionEnd()};
+    }
+
+    @Override
+    public String copy() {
+        return getTextString().substring(getSelectionStart(), getSelectionEnd());
+    }
+
+    @Override
+    public void paste() {
+        getText().insert(getSelectionStart(), ClipBoard.paste(getContext()));
+    }
+
+    @Override
+    public void startSelect() {
+        setSelection(getSelectionStart(), getSelectionStart() + 1);
+    }
+
+    @Override
+    public void setLineBreaks(boolean b) {
+        setHorizontalScrollBarEnabled(b);
+    }
+
+    @Override
+    public void setText(String newText) {
+        super.setText(newText);
+    }
+
+    @Override
+    public void setPaddings(int paddings) {
+        setPadding(paddings, paddings, paddings, paddings);
+    }
+
+    @Override
+    public void jumpCursor(int relative) {
+        setCursorLine(getSelect()[0] + relative);
+    }
+
+    @Override
+    public int getCursorLine() {
+        return getLayout().getLineForOffset(getSelect()[0]);
+    }
+
+    @Override
+    public String[] getLines() {
+        return getTextString().split("\n");
+    }
+
+    @Override
+    public void setCursorLine(int lineNumber) {
+        if (lineNumber < 0) return;
+        Layout layout = getLayout();
+        if (layout == null) return;
+        int lineCount = layout.getLineCount();
+        if (lineNumber >= lineCount) lineNumber = lineCount - 1;
+        int offset = layout.getLineForOffset(lineNumber);
+        setSelection(offset);
     }
 }

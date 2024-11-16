@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import com.xedox.paperclip.R;
 
 public class EditorFragment extends Fragment {
@@ -31,7 +31,16 @@ public class EditorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle bundle) {
         View view = inflater.inflate(R.layout.editor_fragment, parent);
         editor = view.findViewById(R.id.editor);
-        editor.setTextString(text);
+        editor.setText(text);
+
+        var p = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        boolean lb = p.getBoolean("lineBreaks", true);
+        float ts = Float.parseFloat(p.getString("textSize", "24.0"));
+        int ps = Integer.parseInt(p.getString("paddings", "0"));
+        editor.setTextSize(ts);
+        editor.setLineBreaks(lb);
+        editor.setPaddings(ps);
         return view;
     }
 

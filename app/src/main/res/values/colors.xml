@@ -3,13 +3,12 @@
     <color name="background">#ffffff</color>
     <color name="tint">#ffffff</color>
     <color name="text">#000000</color>
-    <color name="toolbar">#7EDB78</color>
     <color name="pressedItem">#efefef</color>
-    <color name="primary">#7EDB78</color>
-    <color name="primaryVariant">#63C15D</color>
-    <color name="primaryDark">#58AA52</color>
-
+    <color name="primary">#517DA2</color>
+    <color name="primaryVariant">#426D91</color>
+    <color name="primaryDark">#31597A</color>
+    <color name="secondary">#517DA2</color>
+    <color name="secondaryVariant">#426D91</color>
     <color name="selectedItem">#ffffff</color>
-    <color name="unselectedItem">#404040</color>
-
+    <color name="unselectedItem">#31597A</color>
 </resources>

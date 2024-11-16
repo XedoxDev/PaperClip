@@ -42,7 +42,7 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     public void back() {
-        Intent i = new Intent(this, EditorActivtiy.class);
+        Intent i = new Intent(this, EditorActivity.class);
         i.putExtra("projectName", projectName);
         startActivity(i);
         finish();
