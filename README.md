@@ -10,4 +10,5 @@ A small editor for writing scripts and such.
 - [x] Settings
 - [ ] Language selection
 - [ ] Theme selection
-- [ ] XDoc (.xdoc) is ready, but I haven't decided yet how it will look.
+
+XDoc (.xdoc) is ready, but I haven't decided yet how it will look.
