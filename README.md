@@ -1,5 +1,12 @@
 # PaperClip
-Editor for video scripts, 
-with projects, pages in them, 
-their own document type and 
-file viewing using XDocView.
+Небольшой редактор дла написания сценариев и тому подобного.
+# Цели
+[x] - Меню проектов
+[x] - Создание/Удаление проектов
+[x] - Единый стиль приложения
+[x] - Редактор со вкладками
+[x] - Сохранение проектов
+[ ] - XDoc (indev)
+[x] - Настройки
+[ ] - Выбор языка
+[ ] - Выбор темы
