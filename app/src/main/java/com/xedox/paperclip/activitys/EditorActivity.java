@@ -102,7 +102,7 @@ public class EditorActivity extends AppCompatActivity {
                 (v) -> {
                     adapter.getEditor(tabLayout.getSelectedTabPosition()).selectAll();
                 });
-        
+
         goU.setOnClickListener(
                 (v) -> {
                     adapter.getEditor(tabLayout.getSelectedTabPosition()).jumpCursor(-1);
@@ -118,7 +118,7 @@ public class EditorActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(projectName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
+
         adapter = new TabPagerAdapter(this);
 
         viewPager.setAdapter(adapter);
@@ -214,16 +214,12 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public void save() {
-        try {
-            Map<String, String> pages = new HashMap<>();
-            for (EditorFragment ef : adapter.getEditors()) {
-                pages.put(ef.getPageName(), ef.getEditor().getTextString());
-            }
-            String text = XDoc.connect(pages);
-            project.getMain().write(text);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "error: " + e.toString(), Toast.LENGTH_SHORT).show();
+        Map<String, String> pages = new HashMap<>();
+        for (EditorFragment ef : adapter.getEditors()) {
+            String txt = ef.getEditor().getTextString();
+            if (txt != null) pages.put(ef.getPageName(), ef.getEditor().getTextString());
         }
+        String text = XDoc.connect(pages);
+        project.getMain().write(text);
     }
 }

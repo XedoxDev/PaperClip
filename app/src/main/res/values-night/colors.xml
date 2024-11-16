@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#181818</color>
+    <color name="tint">#ffffff</color>
+    <color name="text">#ffffff</color>
+    <color name="pressedItem">#efefef</color>
+    <color name="primary">#5F5FC3</color>
+    <color name="appbar">#242426</color>
+    <color name="primaryVariant">#454545</color>
+    <color name="primaryDark">#181818</color>
+    <color name="secondary">#242426</color>
+    <color name="secondaryVariant">#454545</color>
+    <color name="selectedItem">#ffffff</color>
+    <color name="unselectedItem">#181818</color>
+</resources>

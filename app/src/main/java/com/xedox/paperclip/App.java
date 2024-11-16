@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
+import android.widget.Toast;
 import com.xedox.paperclip.projects.Project;
 
 import java.io.File;
@@ -56,5 +57,10 @@ public class App extends Application {
     
     public static int toDP(int pixelValue) {
         return (int) (pixelValue / getDisplayPixelDensity());
+    }
+    
+    public static void mktest(Object text) {
+        Toast.makeText(context, "debug: " + text.toString(), Toast.LENGTH_LONG).show();
+        // func for fast debug, off for release apk
     }
 }

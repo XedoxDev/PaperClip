@@ -1,4 +1,6 @@
 package com.xedox.paperclip.editor;
+import android.widget.HorizontalScrollView;
+import androidx.constraintlayout.solver.state.helpers.HorizontalChainReference;
 
 public interface Editor {
     public String getTextString();
@@ -12,7 +14,7 @@ public interface Editor {
     public void paste();
     public void startSelect();
     public void selectAll();
-    public void setLineBreaks(boolean b);
+    public void setHorizontalScroll(boolean b);
     public void setPaddings(int paddings);
     public void jumpCursor(int relative);
     public int getCursorLine();

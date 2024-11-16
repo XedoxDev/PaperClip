@@ -9,4 +9,14 @@
         <item>Русский</item>
         <item>English</item>
     </string-array>
+    
+    <string-array name="themes_entry">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    
+    <string-array name="languages_entry">
+        <item>RU</item>
+        <item>EN</item>
+    </string-array>
 </resources>

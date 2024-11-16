@@ -57,5 +57,6 @@
     <string name="light">Светлая</string>
     <string name="dark">Тёмная</string>
     
+    
     <string name="autoCompletionOfBrackets">Авто дополнение скобок</string>
 </resources>

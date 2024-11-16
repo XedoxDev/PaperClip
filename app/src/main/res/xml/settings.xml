@@ -5,13 +5,13 @@
             android:key="theme"
             android:title="@string/theme"
             android:entries="@array/themes"
-            android:entryValues="@array/themes"
+            android:entryValues="@array/themes_entry"
             android:defaultValue="@string/light" />
         <ListPreference
             android:key="language"
             android:title="@string/language"
             android:entries="@array/languages"
-            android:entryValues="@array/languages"
+            android:entryValues="@array/languages_entry"
             android:defaultValue="Русский" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/editor">
@@ -32,7 +32,7 @@
         <SwitchPreferenceCompat
             android:key="lineBreaks"
             android:title="@string/lineBreaks"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
         
         <SwitchPreferenceCompat
             android:key="autoCompletionOfBrackets"

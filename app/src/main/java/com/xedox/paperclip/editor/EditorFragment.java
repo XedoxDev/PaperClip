@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
+import com.xedox.paperclip.App;
 import com.xedox.paperclip.R;
 
 public class EditorFragment extends Fragment {
@@ -15,7 +17,7 @@ public class EditorFragment extends Fragment {
     private Context context;
     private String text = "";
     private String pageName;
-
+    
     public EditorFragment(Context context, String pageName, String text) {
         this.context = context;
         this.pageName = pageName;
@@ -34,13 +36,13 @@ public class EditorFragment extends Fragment {
         editor.setText(text);
 
         var p = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-        boolean lb = p.getBoolean("lineBreaks", true);
+        boolean lb = p.getBoolean("lineBreaks", false);
         float ts = Float.parseFloat(p.getString("textSize", "24.0"));
         int ps = Integer.parseInt(p.getString("paddings", "0"));
         editor.setTextSize(ts);
-        editor.setLineBreaks(lb);
+        editor.setHorizontalScroll(lb);
         editor.setPaddings(ps);
+        App.mktest(lb);
         return view;
     }
 

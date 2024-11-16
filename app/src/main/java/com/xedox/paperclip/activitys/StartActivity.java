@@ -1,19 +1,15 @@
 package com.xedox.paperclip.activitys;
 
-import android.content.ComponentName;
-import android.graphics.drawable.Drawable;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.SubMenu;
 import android.view.MenuItem;
 
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +21,7 @@ import com.xedox.paperclip.projects.ProjectsAdapter;
 import com.xedox.paperclip.dialogs.CreateProjectDialog;
 import com.xedox.paperclip.dialogs.ExitDialog;
 import com.xedox.paperclip.tools.FastTask;
+import com.xedox.paperclip.tools.ThemeManager;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -58,6 +55,15 @@ public class StartActivity extends AppCompatActivity {
 
         updateProjects();
         setSupportActionBar(toolbar);
+
+        var p = PreferenceManager.getDefaultSharedPreferences(this);
+        String thm = p.getString("theme", getString(R.string.light));
+        if (thm == "Light") {
+            ThemeManager.setTheme(this, ThemeManager.Type.DAY);
+        }
+        if (thm == "Dark") {
+            ThemeManager.setTheme(this, ThemeManager.Type.NIGHT);
+        }
     }
 
     public void updateProjects() {
@@ -119,6 +125,4 @@ public class StartActivity extends AppCompatActivity {
     public void setSelectedProject(int pos) {
         selectedProject = pos;
     }
-
-    
 }

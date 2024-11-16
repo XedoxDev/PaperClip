@@ -5,13 +5,14 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
+import android.widget.HorizontalScrollView;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xedox.paperclip.R;
 import com.xedox.paperclip.tools.ClipBoard;
 
 public class EditorView extends AppCompatEditText implements Editor {
-
+    
     public EditorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
@@ -24,7 +25,6 @@ public class EditorView extends AppCompatEditText implements Editor {
 
     private void init() {
         setGravity(Gravity.START);
-        setBackgroundColor(getContext().getColor(R.color.background));
         setTextColor(getContext().getColor(R.color.text));
     }
 
@@ -80,11 +80,6 @@ public class EditorView extends AppCompatEditText implements Editor {
     }
 
     @Override
-    public void setLineBreaks(boolean b) {
-        setHorizontalScrollBarEnabled(b);
-    }
-
-    @Override
     public void setText(String newText) {
         super.setText(newText);
     }
@@ -118,5 +113,10 @@ public class EditorView extends AppCompatEditText implements Editor {
         if (lineNumber >= lineCount) lineNumber = lineCount - 1;
         int offset = layout.getLineForOffset(lineNumber);
         setSelection(offset);
+    }
+
+    public void setHorizontalScroll(boolean b) {
+        setHorizontalScrollBarEnabled(b);
+        setHorizontallyScrolling(b);
     }
 }
